@@ -1,0 +1,11 @@
+﻿@model IEnumerable<universidad_challenge.Models.teachers>
+
+<select class="form-control" id="id_teacher" name="id_teacher">
+    @foreach (var item in Model)
+    {
+       <option value="@item.id_teacher">@item.NombreCompleto</option>
+    }
+</select>
+
+
+

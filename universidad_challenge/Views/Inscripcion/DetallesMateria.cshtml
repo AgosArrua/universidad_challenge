@@ -1,0 +1,66 @@
+﻿@model universidad_challenge.Models.subjects
+
+@{
+    ViewBag.Title = "DetallesMateria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Materia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subject_name)
+        </dd>
+
+        <dt>
+            Hora de inicio de clase
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.start_time)
+        </dd>
+
+        <dt>
+            Hora de fin de clase
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.end_time)
+        </dd>
+
+        <dt>
+            Cupo máximo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.students_max)
+        </dd>
+
+        <dt>
+            Inscriptos actualmente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.students)
+        </dd>
+
+        <dt>
+            Descripción
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

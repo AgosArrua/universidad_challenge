@@ -1,0 +1,61 @@
+﻿@model IEnumerable<universidad_challenge.Models.teachers>
+
+@{
+    ViewBag.Title = "Lista de profesores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de profesores</h2>
+
+<p>
+    @Html.ActionLink("Agregar nuevo profesor", "Agregar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            DNI
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellido
+        </th>
+        <th>
+            Activo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.teacher_dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.teacher_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.teacher_last_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.active)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id = item.id_teacher }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.id_teacher }, new { @class ="aElimina"})
+        </td>
+    </tr>
+}
+
+</table>
+
+@section scripts{
+    <script>
+        $(".aElimina").click(function (event) {
+            if (!confirm("¿Está seguro de eliminar?")) {
+                event.preventDefault();
+            }
+        });
+    </script>
+}

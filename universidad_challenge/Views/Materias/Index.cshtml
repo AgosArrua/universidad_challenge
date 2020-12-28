@@ -1,0 +1,86 @@
+﻿@model IEnumerable<universidad_challenge.Models.subjects>
+
+@{
+    ViewBag.Title = "Lista de materias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de materias</h2>
+
+<p>
+    @Html.ActionLink("Agregar nueva materia", "AgregarMateria")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Materia
+        </th>
+        <th>
+            Profesor
+        </th>
+        <th>
+            Hora de inicio
+        </th>
+        <th>
+            Hora de finalización
+        </th>
+        <th>
+            Cupo máximo de alumnos
+        </th>
+        <th>
+            Alumnos inscriptos
+        </th>
+        <th>
+            Descripcion
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subject_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_teacher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.start_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.end_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.students_max)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.students)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EditarMateria", new { id = item.id_subject }) |
+                @Html.ActionLink("Eliminar", "EliminarMateria", new { id = item.id_subject }, new { @class = "aElimina" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        $(".aElimina").click(function (event) {
+            if (!confirm("¿Está seguro de eliminar?")) {
+                event.preventDefault();
+            }
+        });
+    </script>
+}
